@@ -1,0 +1,31 @@
+{   
+    "CLOUD" : {
+       "momentumUser"   : "<momentum-suite-username>",
+       "momentumToken"  : "<momentum-suite-access-key>",
+       "momentumHost"   : "https://console.momentumsuite.com/gateway/wd/hub/",
+       "ios" : {
+            "momentumApp": "ms://<hashed-app-id>",
+            "momentumDeviceList": [9999]
+        },
+       "android" : {
+            "momentumApp": "ms://<hashed-app-id>",
+            "momentumDeviceList": [9999]
+            }  
+    },
+   
+    "LOCAL" : {
+        "host": "http://127.0.0.1:4723/",
+        "ios" : {
+             "app": "https://momentumsuite.com/downloads/sample.ipa",
+             "deviceName": "iPhone 13"
+         },
+         "android" : {
+             "automationName":"uiautomator2",
+             "deviceName":"SM-J730GM",
+             "app":"",
+             "platformVersion":"9.0",
+	         "appActivity":"com.lambdatest.proverbial",
+    	     "appPackage":"com.sec.android.app.launcher"
+         }
+     }        
+}

@@ -1,0 +1,60 @@
+# Overall for setup to run the appium with specflow in C# as follows:
+1) Install the appium 2.0 on Mac: The installation guide can be found in https://medium.com/@iamfaisalkhatri/beginners-guide-to-appium-2-0-d8118b31837c
+
+2) Install the Visual Studio for Mac: The installation package can be found in https://learn.microsoft.com/en-us/visualstudio/mac/installation?view=vsmac-2022
+
+3) Install the related packages for NuGet as following ones:
+   a) "nunit" Version="3.12.0"
+   b) "NUnit3TestAdapter" Version="3.15.1"
+   c) "Microsoft.NET.Test.Sdk" Version="17.2.0"
+   d) "Selenium.WebDriver" Version="3.141.0"
+   e) "SpecFlow" Version="3.1.97"
+   f) "SpecFlow.NUnit" Version="3.1.97"
+   g) "Appium.WebDriver" Version="4.3.2"
+
+4) Launch the appium 2.0 
+# > appium -p 4723 
+
+5) Enter the desired capability for the physical mobile 
+../bin/Debug/test_settings, for instance, the physical device for Android as follows:
+"LOCAL" : {
+        "host": "http://127.0.0.1:4723/",
+        "ios" : {
+             "app": "https://momentumsuite.com/downloads/sample.ipa",
+             "deviceName": "iPhone 13"
+         },
+         "android" : {
+             "automationName":"uiautomator2",
+             "deviceName":"SM-J730GM",
+             "app":"",
+             "platformVersion":"9.0",
+	         "appActivity":"com.lambdatest.proverbial",
+    	     "appPackage":"com.sec.android.app.launcher"
+         }
+
+
+
+6) Run the test cases  with the following command:
+# >dotnet test testingapp-specflow.csproj -e prod
+
+7) For the security reason,
+The username and password can be placed in the file, namely "mysettings.runsettings" and upload to the S3 bucket to fetch before 
+running the code and the content of the xml file and how to call the parameters can be instructed as follows:
+<TestRunParameters>
+    <Parameter name="webAppUrl" value="http://localhost" />
+    <Parameter name="docsUrl" value="https://learn.microsoft.com" />
+</TestRunParameters>
+To call the paramter of webAppUrl:
+private string _appUrl;
+public TestContext TestContext { get; set; }
+
+[TestMethod] // [Test] for NUnit
+public void HomePageTest()
+{
+    string _appUrl = TestContext.Properties["webAppUrl"];
+}
+
+To run with the parameter file by given the command line as follows:
+dotnet test testingapp-specflow.csproj -e prod --settings:mysettings.runsettings
+
+ 

@@ -1,0 +1,3 @@
+is_global = true
+build_property.RootNamespace = testingbot_specflow
+build_property.ProjectDir = /Users/mac/Documents/automation_source/specflow-app-example/specflow-app-example/testingbot-specflow/
