@@ -70,7 +70,6 @@ namespace testingbot_specflow
         
         public virtual void ScenarioCleanup()
         {
-            //testRunner.CollectScenarioErrors();
         }
         
         [NUnit.Framework.TestAttribute()]

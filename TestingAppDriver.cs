@@ -40,6 +40,7 @@ namespace testingbot_specflow
 
         public AppiumDriver<AndroidElement> Init()
         {
+            //For Android device desired capability
             var myJsonString = File.ReadAllText("test_settings.json");
             var myJObject = JObject.Parse(myJsonString);
             var appiumHost = myJObject.SelectToken("$.LOCAL.host").Value<string>();
